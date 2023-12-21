@@ -12,6 +12,7 @@
 #include <tchar.h>
 #include <stdio.h>
 #include <strsafe.h>
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -43,6 +44,7 @@ static enum DATA_DEFINE_ID {
 
 static enum DATA_REQUEST_ID {
     REQUEST_6,
+    REQUEST_CALLSIGN,
 };
 
 typedef struct ObservationPoint
@@ -69,7 +71,7 @@ ObservationPoint listOfPoints[11] = {
     { "Dry Valley, Vanda, Antarctica", 0.0, -77.517, 161.853, 0.0, 0.0, 85.0, 1, 0 },
     { "Villa Florida, Paraguay", 0.0, -26.331, -57.331, 0.0, 0.0, 85.0, 1, 0 },
     { "Enshi, Hubei Province, China", 0.0, 30.276, 109.494, 0.0, 0.0, 85.0, 1, 0 },
-    { "Alibek, Turkmenistan", 0.0, 37.93, 58.119, 0.0, 0.0, 85.0, 1, 0 },
+    { "Alibek, Turkmenistan", 0.0, 37.930, 58.119, 0.0, 0.0, 85.0, 1, 0 },
 };
 
 int numberOfLocations = *(&listOfPoints + 1) - listOfPoints;
@@ -80,7 +82,7 @@ typedef struct structOverlayText
     string overlay;
 };
 
-structOverlayText ot = { "Hello World" };
+structOverlayText ot;
 
 int counter = 1;
 int timer = 30;
@@ -91,13 +93,13 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
     
     switch(pData->dwID)
     {
+
         case SIMCONNECT_RECV_ID_EVENT:
         {
             SIMCONNECT_RECV_EVENT *evt = (SIMCONNECT_RECV_EVENT*)pData;
 
             switch(evt->uEventID)
             {
-
                 //case EVENT_6:
                 case EVENT_1S:
 					{   
@@ -106,17 +108,17 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
                         if (counter % timer == 0) 
                         {
                             // Random int
-                            newLocation = rand() % numberOfLocations;
+                            //newLocation = rand() % numberOfLocations;
 
                             // Cycle through locations
-                            //if (newLocation != numberOfLocations + 1)
-                            //{
-                            //    newLocation++;
-                            //}
-                            //else
-                            //{
-                            //    newLocation = 0;
-                            //}
+                            if (newLocation != numberOfLocations)
+                            {
+                                newLocation++;
+                            }
+                            else
+                            {
+                                newLocation = 0;
+                            }
 
                             SIMCONNECT_DATA_INITPOSITION Init;
                             Init.Altitude = 0.0;
@@ -129,11 +131,11 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
                             Init.Airspeed = 0;
                             hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_6, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(Init), &Init);
 
-                            // Trying to get the text description to show on screen by passing it to the ATC AIRLINE variable, which can hold a 50-char string 
-                            ot.overlay = listOfPoints[newLocation].Name;
-                            hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_CALLSIGN, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(ot), &ot);
+                            // Trying to get the flight number to show the list item number of location
+                            ot.overlay = listOfPoints[newLocation].Name.c_str();
+                            hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_6, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(ot), &ot);
 
-                            printf("\n%s", ot.overlay.c_str());
+                            printf("\nNew Location: %s", ot.overlay.c_str());
                         }
                         
                     }
@@ -169,7 +171,7 @@ void testDataSet()
         hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_6, "Initial Position", NULL, SIMCONNECT_DATATYPE_INITPOSITION);
 
         // Set up a data definition for callsign
-        hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_CALLSIGN, "A:ATC AIRLINE", "string");
+        hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_6, "ATC AIRLINE", "string");
 
         // Request a simulation start event
         hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_SIM_START, "SimStart");
