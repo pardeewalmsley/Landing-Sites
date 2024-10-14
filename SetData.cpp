@@ -1,11 +1,11 @@
 // Copyright (c) Asobo Studio, All rights reserved. www.asobostudio.com
 //------------------------------------------------------------------------------
 //
-//  SimConnect Set Data Sample
+//  Landing Sites Montage Script
 // 
 //	Description:
-//				When z is pressed, the user aircraft is moved
-//				to a new location
+//				This script communicates between a shot list and the MSFS engine.
+//				Every 60 seconds, the plane is moved to a new location on the shot list.
 //------------------------------------------------------------------------------
 
 #include <windows.h>
@@ -14,6 +14,12 @@
 #include <strsafe.h>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 #include "SimConnect.h"
@@ -34,7 +40,7 @@ static enum EVENT_ID{
     EVENT_SLEW_ON,
     EVENT_OVERLAYMENU,
     EVENT_6,
-    EVENT_1S,
+    EVENT_4S,
 };
 
 static enum DATA_DEFINE_ID {
@@ -60,37 +66,90 @@ typedef struct ObservationPoint
     int Airspeed {};
 };
 
-ObservationPoint listOfPoints[11] = {
-    { "Tegucigalpa, Honduras", 0.0, 14.057, -87.273, 0.0, 0.0, 335.0, 1, 0 },
-    { "Tin City Broadband", 0.0, 65.561, -167.924, 0.0, 0.0, 85.0, 1, 0 },
-    { "Pasadena Art Center, College of Design", 0.0, 34.171, -118.185, 0.0, 0.0, 85.0, 1, 0 },
-    { "Mount Denham, Jamaica", 0.0, 18.226, -77.535, 0.0, 0.0, 85.0, 1, 0 },
-    { "Shemya, Alaska", 0.0, 52.731, -185.897, 0.0, 0.0, 85.0, 1, 0 },
-    { "Bogoin, Central African Republic", 0.0, 5.176, 18.424, 0.0, 0.0, 85.0, 1, 0 },
-    { "La Paz, Bolivia", 0.0, -16.288, -68.131, 0.0, 0.0, 85.0, 1, 0 },
-    { "Dry Valley, Vanda, Antarctica", 0.0, -77.517, 161.853, 0.0, 0.0, 85.0, 1, 0 },
-    { "Villa Florida, Paraguay", 0.0, -26.331, -57.331, 0.0, 0.0, 85.0, 1, 0 },
-    { "Enshi, Hubei Province, China", 0.0, 30.276, 109.494, 0.0, 0.0, 85.0, 1, 0 },
-    { "Alibek, Turkmenistan", 0.0, 37.930, 58.119, 0.0, 0.0, 85.0, 1, 0 },
-};
-
-int numberOfLocations = *(&listOfPoints + 1) - listOfPoints;
-int newLocation = 0;
-
-typedef struct structOverlayText 
-{
-    string overlay;
-};
-
-structOverlayText ot;
+vector<ObservationPoint> listOfPoints;
+int numberOfLocations;
+int newLocation = -1;
 
 int counter = 1;
-int timer = 30;
+int timer = 6;
+
+vector<ObservationPoint> parseCSV(const string& filename, int& numberOfLocations) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Error opening file: " << filename << endl;
+        return listOfPoints;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string token;
+        ObservationPoint data;
+
+        // Read Name
+        getline(ss, data.Name, ',');
+
+        // Read Altitude
+        getline(ss, token, ',');
+        data.Altitude = stoi(token);
+
+        // Read Latitude
+        getline(ss, token, ',');
+        data.Latitude = stod(token);
+
+        // Read Longitude
+        getline(ss, token, ',');
+        data.Longitude = stod(token);
+
+        // Read Pitch
+        getline(ss, token, ',');
+        data.Pitch = stod(token);
+
+        // Read Bank
+        getline(ss, token, ',');
+        data.Bank = stod(token);
+
+        // Read Heading
+        getline(ss, token, ',');
+        data.Heading = stod(token);
+
+        // Read OnGround
+        getline(ss, token, ',');
+        data.OnGround = stod(token);
+
+        // Read Airspeed
+        getline(ss, token, ',');
+        data.Airspeed = stod(token);
+
+        // Push data into array
+        listOfPoints.push_back(data);
+    }
+
+    numberOfLocations = listOfPoints.size(); // Calculate the number of items in the CSV
+    file.close();
+    return listOfPoints;
+}
+
+int ParseFile(void) 
+{
+    string filename = "ShotList.txt"; // Change this to your file name
+    vector<ObservationPoint> dataArray = parseCSV(filename, numberOfLocations);
+
+    cout << "Number of items in shot list: " << numberOfLocations << endl;
+
+    // Print parsed data
+    for (const auto& data : dataArray) {
+        cout << data.Name << ", " << data.Altitude << ", " << data.Latitude << ", " << data.Longitude << ", " << data.Pitch << ", " << data.Bank << ", " << data.Heading << ", " << data.OnGround << ", " << data.Airspeed << endl;
+    }
+
+    return 0;
+}
 
 void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pContext)
 {
     HRESULT hr;
-    
+    srand(time(NULL));
+
     switch(pData->dwID)
     {
 
@@ -101,7 +160,7 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
             switch(evt->uEventID)
             {
                 //case EVENT_6:
-                case EVENT_1S:
+                case EVENT_4S:
 					{   
                         counter++;
 
@@ -121,21 +180,17 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
                             }
 
                             SIMCONNECT_DATA_INITPOSITION Init;
-                            Init.Altitude = 0.0;
+                            Init.Altitude = listOfPoints[newLocation].Altitude;
                             Init.Latitude = listOfPoints[newLocation].Latitude;
                             Init.Longitude = listOfPoints[newLocation].Longitude;
-                            Init.Pitch = 0.0;
+                            Init.Pitch = listOfPoints[newLocation].Pitch;
                             Init.Bank = 0.0;
                             Init.Heading = listOfPoints[newLocation].Heading;
-                            Init.OnGround = 1;
+                            Init.OnGround = listOfPoints[newLocation].OnGround;
                             Init.Airspeed = 0;
                             hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_6, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(Init), &Init);
 
-                            // Trying to get the flight number to show the list item number of location
-                            ot.overlay = listOfPoints[newLocation].Name.c_str();
-                            hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_6, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(ot), &ot);
-
-                            printf("\nNew Location: %s", ot.overlay.c_str());
+                            printf("\nNew Location: %s", listOfPoints[newLocation].Name.c_str());
                         }
                         
                     }
@@ -185,7 +240,7 @@ void testDataSet()
 
         // Subscribe to the four second timer
 
-        hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_1S, "1sec");
+        hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_4S, "4sec");
 
         // Sign up for notifications for EVENT_6
         hr = SimConnect_AddClientEventToNotificationGroup(hSimConnect, GROUP_6, EVENT_6);
@@ -212,7 +267,7 @@ void testDataSet()
 
 int __cdecl _tmain(int argc, _TCHAR* argv[])
 {
-
+    ParseFile();
     testDataSet();
 
 	return 0;

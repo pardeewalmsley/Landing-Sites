@@ -1,0 +1,22 @@
+﻿  SetData.cpp
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(32,2): warning C4091: 'static ': ignored on left of 'GROUP_ID' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(36,2): warning C4091: 'static ': ignored on left of 'INPUT_ID' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(44,2): warning C4091: 'static ': ignored on left of 'EVENT_ID' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(49,2): warning C4091: 'static ': ignored on left of 'DATA_DEFINE_ID' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(54,2): warning C4091: 'static ': ignored on left of 'DATA_REQUEST_ID' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(67,2): warning C4091: 'typedef ': ignored on left of 'ObservationPoint' when no variable is declared
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(106,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(110,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(114,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(118,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(122,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(128,44): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\SetData.cpp(151,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 282 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+SimConnect.lib(client_proxy.obj) : warning LNK4099: PDB 'SimConnect.pdb' was not found with 'SimConnect.lib(client_proxy.obj)' or at 'C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\x64\Release\SimConnect.pdb'; linking object as if no debug info
+SimConnect.lib(commClient.obj) : warning LNK4099: PDB 'SimConnect.pdb' was not found with 'SimConnect.lib(commClient.obj)' or at 'C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\x64\Release\SimConnect.pdb'; linking object as if no debug info
+SimConnect.lib(SimConnectClient.obj) : warning LNK4099: PDB 'SimConnect.pdb' was not found with 'SimConnect.lib(SimConnectClient.obj)' or at 'C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\x64\Release\SimConnect.pdb'; linking object as if no debug info
+  SetData.vcxproj -> C:\MSFS SDK\Samples\VisualStudio\SimConnectSamples\SetData\x64\Release\SetData.exe
