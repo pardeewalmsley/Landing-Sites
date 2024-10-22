@@ -5,7 +5,7 @@
 // 
 //	Description:
 //				This script communicates between a shot list and the MSFS engine.
-//				Every 60 seconds, the plane is moved to a new location on the shot list.
+//				Every 60 seconds, the camera cuts to a new location on the shot list.
 //------------------------------------------------------------------------------
 
 #include <windows.h>
@@ -40,7 +40,7 @@ static enum EVENT_ID{
     EVENT_SLEW_ON,
     EVENT_OVERLAYMENU,
     EVENT_6,
-    EVENT_4S,
+    EVENT_1S,
 };
 
 static enum DATA_DEFINE_ID {
@@ -71,7 +71,7 @@ int numberOfLocations;
 int newLocation = -1;
 
 int counter = 1;
-int timer = 6;
+int timer = 15;
 
 vector<ObservationPoint> parseCSV(const string& filename, int& numberOfLocations) {
     ifstream file(filename);
@@ -130,7 +130,7 @@ vector<ObservationPoint> parseCSV(const string& filename, int& numberOfLocations
     return listOfPoints;
 }
 
-int ParseFile(void) 
+int ParseFile(void)
 {
     string filename = "ShotList.txt"; // Change this to your file name
     vector<ObservationPoint> dataArray = parseCSV(filename, numberOfLocations);
@@ -160,7 +160,7 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
             switch(evt->uEventID)
             {
                 //case EVENT_6:
-                case EVENT_4S:
+                case EVENT_1S:
 					{   
                         counter++;
 
@@ -180,13 +180,13 @@ void CALLBACK MyDispatchProcSD(SIMCONNECT_RECV* pData, DWORD cbData, void *pCont
                             }
 
                             SIMCONNECT_DATA_INITPOSITION Init;
-                            Init.Altitude = listOfPoints[newLocation].Altitude;
                             Init.Latitude = listOfPoints[newLocation].Latitude;
                             Init.Longitude = listOfPoints[newLocation].Longitude;
+                            Init.Altitude = listOfPoints[newLocation].Altitude;
                             Init.Pitch = listOfPoints[newLocation].Pitch;
                             Init.Bank = 0.0;
                             Init.Heading = listOfPoints[newLocation].Heading;
-                            Init.OnGround = listOfPoints[newLocation].OnGround;
+                            Init.OnGround = 0;
                             Init.Airspeed = 0;
                             hr = SimConnect_SetDataOnSimObject(hSimConnect, DEFINITION_6, SIMCONNECT_OBJECT_ID_USER, 0, 0, sizeof(Init), &Init);
 
@@ -225,9 +225,6 @@ void testDataSet()
         // Set up a data definition for positioning data
         hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_6, "Initial Position", NULL, SIMCONNECT_DATATYPE_INITPOSITION);
 
-        // Set up a data definition for callsign
-        hr = SimConnect_AddToDataDefinition(hSimConnect, DEFINITION_6, "ATC AIRLINE", "string");
-
         // Request a simulation start event
         hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_SIM_START, "SimStart");
 
@@ -240,7 +237,7 @@ void testDataSet()
 
         // Subscribe to the four second timer
 
-        hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_4S, "4sec");
+        hr = SimConnect_SubscribeToSystemEvent(hSimConnect, EVENT_1S, "1sec");
 
         // Sign up for notifications for EVENT_6
         hr = SimConnect_AddClientEventToNotificationGroup(hSimConnect, GROUP_6, EVENT_6);

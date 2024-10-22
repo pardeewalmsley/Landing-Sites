@@ -1,1 +1,48 @@
+Greenwich Park London, 234.0, 51.478754, 0, 0.0, 0.0, 300.0, 0, 0
+Greenwich Park London, 234.0, 51.478754, 0, 0.0, 0.0, 300.0, 0, 0
+Natewa Bay Vanua Levu Fiji, 263.384, -16.291757, 180.0, 10.0, 0.0, 185.0, 0, 0
+Natewa Bay Vanua Levu Fiji, 263.384, -16.291757, 180.0, 10.0, 0.0, 185.0, 0, 0
+Namib Desert Namibia, 1675.0, -23.983333, 15.000000, 0.0, 0.0, 54.0, 0, 0
+Namib Desert Namibia, 1675.0, -23.983333, 15.000000, 0.0, 0.0, 54.0, 0, 0
 Tigalda Island Alaska USA, 622.482, 54.085236, -165.0000, 0.0, 0.0, 145.0, 0, 0
+Tigalda Island Alaska USA, 622.482, 54.085236, -165.0000, 0.0, 0.0, 145.0, 0, 0
+Near Herajoki Finland, 383, 62.999, 30.0000, 0.0, 0.0, 175.0, 0, 0
+Near Herajoki Finland, 383, 62.999, 30.0000, 0.0, 0.0, 175.0, 0, 0
+Off Moʻorea-Maiʻao French Polynesia, 2421.5029, -17.5000, -150.0000, 10.0, 0.0, 95.0, 0, 0
+Off Moʻorea-Maiʻao French Polynesia, 2421.5029, -17.5000, -150.0000, 10.0, 0.0, 95.0, 0, 0
+Near Zeistecho Georgia, 10370, 42.598937, 45.0, 0.0, 0.0, 220.0, 0, 0
+Near Zeistecho Georgia, 10370, 42.598937, 45.0, 0.0, 0.0, 220.0, 0, 0
+Mangareva Gambier Islands French Polynesia, 183, -23.100, -135.000, 0.0, 0.0, 150.0, 0, 0
+Mangareva Gambier Islands French Polynesia, 183, -23.100, -135.000, 0.0, 0.0, 150.0, 0, 0
+Near Aqdash Iran, 2522, 37.0000, 60.0000, 2.0, 0.0, 200.0, 0, 0
+Near Aqdash Iran, 2522, 37.0000, 60.0000, 2.0, 0.0, 200.0, 0, 0
+Haig Mountain Washington USA, 7373, 48.997, -120.0000, 0.0, 0.0, 155.0, 0, 0
+Haig Mountain Washington USA, 7373, 48.997, -120.0000, 0.0, 0.0, 155.0, 0, 0
+Mashkhur Jusup Kazakhstan, 1112, 51.0000, 75.0000, 0.0, 0.0, 250.0, 0, 0
+Mashkhur Jusup Kazakhstan, 1112, 51.0000, 75.0000, 0.0, 0.0, 250.0, 0, 0
+Denver Colorado USA, 5267.3821, 39.747265, -105, 3.0, 0.0, 100.0, 0, 0
+Denver Colorado USA, 5267.3821, 39.747265, -105, 3.0, 0.0, 100.0, 0, 0
+Brahmaputra River Assam India, 170.797, 25.911785, 90.0, 3.0, 0.0, 0.0, 0, 0
+Brahmaputra River Assam India, 170.797, 25.911785, 90.0, 3.0, 0.0, 0.0, 0, 0
+Waldwick Wisconsin USA, 1045, 42.84808, -90.0, 0.0, 0.0, 180.0, 0, 0
+Waldwick Wisconsin USA, 1045, 42.84808, -90.0, 0.0, 0.0, 180.0, 0, 0
+Qingshui River Xingyi Province China, 4410, 24.992551, 105.0000, 90.0, 0.0, 0.0, 0, 0
+Qingshui River Xingyi Province China, 4410, 24.992551, 105.0000, 90.0, 0.0, 0.0, 0, 0
+Nazca Peru, 2965.266, -14.753973, -75.0000, 0.0, 0.0, 245.0, 0, 0
+Nazca Peru, 2965.266, -14.753973, -75.0000, 0.0, 0.0, 245.0, 0, 0
+Santa Monica Island Phillipines, 38, 11.997407, 120.0000, 0.0, 0.0, 124.0, 0, 0
+Santa Monica Island Phillipines, 38, 11.997407, 120.0000, 0.0, 0.0, 124.0, 0, 0
+East Head Falkland Islands, 663.980, -51.999683, -60, 0.0, 0.0, 290.0, 0, 0
+East Head Falkland Islands, 663.980, -51.999683, -60, 0.0, 0.0, 290.0, 0, 0
+Izushi Valley Kyoto Province Japan, 0.0, 35.402271, 135.0, 0.0, 0.0, 0.0, 1, 0
+Izushi Valley Kyoto Province Japan, 0.0, 35.402271, 135.0, 0.0, 0.0, 0.0, 1, 0
+Minas Gerais Brazil, 2547.481610892, -14.625837, -45.0, 0.0, 0.0, 45.0, 0, 0
+Minas Gerais Brazil, 2547.481610892, -14.625837, -45.0, 0.0, 0.0, 45.0, 0, 0
+Near Novaya Arman Russia, 2404.585, 60.000, 150.000, 5.0, 0.0, 205.0, 0, 0
+Near Novaya Arman Russia, 2404.585, 60.000, 150.000, 5.0, 0.0, 205.0, 0, 0
+Southeast Greenland Ice Sheet, 10342, 68.810000, -30.000000, 0.0, 0.0, 140.0, 0, 0
+Southeast Greenland Ice Sheet, 10342, 68.810000, -30.000000, 0.0, 0.0, 140.0, 0, 0
+Near Bernheim New Caledonia, 3223.413, -21.171076, 165, 0.0, 0.0, 160.0, 0, 0
+Near Bernheim New Caledonia, 3223.413, -21.171076, 165, 0.0, 0.0, 160.0, 0, 0
+Mulathing Iceland, 863, 65.345, -15.000, 0.0, 0.0, 250.0, 0, 0
+Mulathing Iceland, 863, 65.345, -15.000, 0.0, 0.0, 250.0, 0, 0
