@@ -26,6 +26,8 @@ The software stack diagram below illustrates the main components of the work:
 
 *Sculptures*: A series of digital 3D sculptures, installed at different locations on the virtual Earth. They are then augmented through dynamic elements that react to real-time weather and lighting conditions.
 
+![Landing Sites Stack Diagram](https://github.com/pardeewalmsley/Landing-Sites/blob/main/Fig5_Software_Stack_Diagram.png)
+
 ## Installation and running requirements
 
 ## Instructions
