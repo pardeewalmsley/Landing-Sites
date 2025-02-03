@@ -30,12 +30,12 @@ The software stack diagram below illustrates the main components of the work:
 
 ## Installation and running requirements
 
-*System requirements*: Largely those required to run [Microsoft Flight Simulator 2020](https://store.steampowered.com/app/1250410/Microsoft_Flight_Simulator_40th_Anniversary_Edition/).  
+*System requirements*: Largely those required to run Microsoft Flight Simulator 2020.  
 
 *Dependencies*:  
- 1. Microsoft Flight Simulator 2020
- 2. Visual Studio 2019
- 3. Montage Controller Mod + Shot List
+ 1. [Microsoft Flight Simulator 2020](https://store.steampowered.com/app/1250410/Microsoft_Flight_Simulator_40th_Anniversary_Edition/)
+ 2. [Visual Studio 2019](https://visualstudio.microsoft.com/de/vs/older-downloads/)
+ 3. Montage Controller Mod + Shot List (this repo)
  4. "Planetary Camera" custom plane mod
  5. 25 Landing Sites sculptures
  6. [Flo Pro](https://parallel42.com/products/flow-pro?srsltid=AfmBOop1qH8QfSUyRVL0LMlCY8DrzdT2A-HieRiTgn3Qff3bmUMrgrth)
