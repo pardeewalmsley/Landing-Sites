@@ -10,6 +10,8 @@ At each of the sites is placed a sculpture - at times clearly visible in the fra
 </br>
 The live stream (when it is active) as well as recordings of streams from the past 7 days, can be found on [my twitch.tv channel](https://www.twitch.tv/alex_walmsley).
 
+![LandingSites_Still](https://github.com/user-attachments/assets/d2fcf13e-ed05-4518-956f-613487f7cb47)
+
 ## Design
 
 The software stack diagram below illustrates the main components of the work:  
@@ -30,20 +32,43 @@ The software stack diagram below illustrates the main components of the work:
 
 ## Installation and running requirements
 
-*System requirements*: Largely those required to run Microsoft Flight Simulator 2020.  
+*System requirements*: Those required to run Microsoft Flight Simulator 2020.  
 
-*Dependencies*:  
+*Software requirements*:  
  1. [Microsoft Flight Simulator 2020](https://store.steampowered.com/app/1250410/Microsoft_Flight_Simulator_40th_Anniversary_Edition/)
  2. [Visual Studio 2019](https://visualstudio.microsoft.com/de/vs/older-downloads/)
- 3. Montage Controller Mod + Shot List (this repo)
- 4. "Planetary Camera" custom plane mod
+ 3. Montage Controller Mod + Shot List (current repo)
+ 4. "Planetary Camera" mod
  5. 25 Landing Sites sculptures
  6. [Flo Pro](https://parallel42.com/products/flow-pro?srsltid=AfmBOop1qH8QfSUyRVL0LMlCY8DrzdT2A-HieRiTgn3Qff3bmUMrgrth)
- 7. [OBS Studio](https://obsproject.com/)  
+ 7. Flo Pro Interface widget
+ 8. [OBS Studio](https://obsproject.com/)  
 
 ## Instructions
 
+*Setup*: 
  1. Install Microsoft Flight Simulator 2020
- 2. 
+ 2. Clone/Download current repo and open in Visual Studio 2019
+ 3. Build project in VS2019
+ 4. Download "Planetary Camera" mod and put in community folder (Hint: [How to find community folder](https://helpdesk.aerosoft.com/hc/en-gb/articles/5023507568925-How-to-locate-the-Community-folder-in-Microsoft-Flight-Simulator))
+ 5. Download Landing Sites sculptures and put in community folder
+ 6. Create a new widget in Flo Pro with widget code
+ 7. Set up stream with OBS Studio
+
+*Run*:
+ 1. Start MSFS 2020
+ 2. Select "World Map"
+ 3. Select "Planetary Camera" from list of aircraft
+ 4. Select any airport in the world and start from one of the gates (i.e. not on the runway)
+ 5. Once the simulation is running, switch on Developer Mode
+ 6. Turn on the debug overlay from Debug > Display FPS
+ 7. Turn on Flo Pro widget by pressing Tab and selecting "Realtime Film Overlay"
+ 8. Run SetData.exe (/run from within VS2019)
+ 9. In OBS Studio, press "Start Streaming"
 
 ## Documentation
+
+*Links*:
+ - [Stream](https://www.twitch.tv/alex_walmsley) on twitch.tv
+ - [Project website](https://www.alexanderwalmsley.co.uk/landing-sites-2025)
+ - [Article](https://classof24.xcoax.org/paper09.html) about background and design of project
