@@ -41,7 +41,7 @@ The software stack diagram below illustrates the main components of the work:
  4. "Planetary Camera" mod
  5. 25 Landing Sites sculptures
  6. [Flo Pro](https://parallel42.com/products/flow-pro?srsltid=AfmBOop1qH8QfSUyRVL0LMlCY8DrzdT2A-HieRiTgn3Qff3bmUMrgrth)
- 7. Flo Pro Interface widget
+ 7. [Flo Pro Interface widget](https://github.com/pardeewalmsley/Landing-Sites-Interface)
  8. [OBS Studio](https://obsproject.com/)  
 
 ## Instructions
