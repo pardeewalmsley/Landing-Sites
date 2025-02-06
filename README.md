@@ -67,7 +67,7 @@ The software stack diagram below illustrates the main components of the work:
  9. In OBS Studio, press "Start Streaming"
 
 *Settings for MSFS 2020*:  
- 1. 
+ 1. Once in game, open the "Options" menu
 
 ## Documentation
 
