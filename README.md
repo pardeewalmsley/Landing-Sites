@@ -66,6 +66,9 @@ The software stack diagram below illustrates the main components of the work:
  8. Run SetData.exe (/run from within VS2019)
  9. In OBS Studio, press "Start Streaming"
 
+*Settings for MSFS 2020*:
+ 1. 
+
 ## Documentation
 
 *Links*:
